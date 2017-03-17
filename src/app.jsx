@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Router, Link, browserHistory } from 'react-router';
 
 class FckWorld extends React.Component {
   render() {
@@ -13,16 +13,28 @@ class FckWorld extends React.Component {
 class App extends React.Component {
   render() {
     return (
-      <Router>
-        <div>
-          <Route exact path="/" component={ App }/>
-          <Route exact path="/fck_world" component={ FckWorld }/>
-          <Link to='/fck_world'>Hello, World!</Link>
-        </div>
-      </Router>
+      <div>
+        <Link to='/fck_world'>Hello, World!</Link>
+      </div>
     );
   }
 }
 
+const routes = [
+  {
+    path: '/',
+    indexRoute: { component: App },
+    childRoutes: [
+      {
+        path: 'fck_world',
+        component: FckWorld
+      }
+    ]
+  }
+];
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+const router = (
+  <Router history={ browserHistory } routes={ routes }/>
+);
+
+ReactDOM.render(router, document.getElementById('app'));
