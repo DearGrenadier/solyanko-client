@@ -1,0 +1,29 @@
+{
+  "name": "Solyanko",
+  "version": "0.0.1",
+  "description": "Solyanko client",
+  "main": "index.js",
+  "author": "Dima Nazarchuk",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "babel-preset-react": "^6.23.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "react-router-dom": "^4.0.0",
+    "redux": "^3.6.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "scripts": {
+    "start": "webpack --config webpack.config.js",
+    "prod": "webpack --config webpack.config.js -p",
+    "server": "webpack-dev-server --progress --colors"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.4.0",
+    "babel-preset-es2015": "^6.22.0"
+  }
+}
