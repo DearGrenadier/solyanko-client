@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Link, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import store from './store/';
 
 class FckWorld extends React.Component {
   render() {
@@ -37,4 +40,4 @@ const router = (
   <Router history={ browserHistory } routes={ routes }/>
 );
 
-ReactDOM.render(router, document.getElementById('app'));
+ReactDOM.render(<Provider store={ store }>{ router }</Provider>, document.getElementById('app'));
