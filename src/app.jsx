@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import { Router, Link, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { syncHistoryWithStore } from 'react-router-redux';
+
 import store from './store/';
 
 class FckWorld extends React.Component {
   render() {
     return (
-      <Link to='/'>Hello, Fucking World!</Link>
+      <span onClick={ browserHistory.goBack }>Hello, Fucking World!</span>
     );
   }
 }
@@ -37,7 +39,7 @@ const routes = [
 ];
 
 const router = (
-  <Router history={ browserHistory } routes={ routes }/>
+  <Router history={ syncHistoryWithStore(browserHistory, store) } routes={ routes }/>
 );
 
 ReactDOM.render(<Provider store={ store }>{ router }</Provider>, document.getElementById('app'));
