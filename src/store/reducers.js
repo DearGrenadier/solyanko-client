@@ -1,20 +1,15 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux'
+import { combineForms } from 'react-redux-form';
+import { routerReducer } from 'react-router-redux';
 
-const TEST = 'TEST';
-
-const testReducer = (state = {}, action) => {
-  switch (action.type) {
-    case TEST:
-      return state;
-    default:
-      return state;
-  }
-}
+import userRegistrationReducer from 'components/users/reducers';
+import currentUserReducer from 'components/users/currentUser/reducers';
+import { userForms } from 'components/users/reducers';
 
 const rootReducer = combineReducers({
-  testReducer: testReducer,
-  routing: routerReducer
+  routing: routerReducer,
+  currentUser: currentUserReducer,
+  forms: combineForms(userForms, 'forms')
 });
 
 export default rootReducer;
